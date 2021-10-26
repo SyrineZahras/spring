@@ -25,7 +25,6 @@ private static final Logger l = LogManager.getLogger(ClientTestLog4j.class);
 
 @Test
 public void testRetrieveClient() {
-ClientServiceImpl client = client.retrieveClient((long) 2);
 l.info("retrieveClient : "+ client);
 }
 
