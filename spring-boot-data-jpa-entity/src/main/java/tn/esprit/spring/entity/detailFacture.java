@@ -15,8 +15,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "detailFacture")
-public class detailFacture implements Serializable {
+@Table(name= "DetailFacture")
+public class DetailFacture implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -38,17 +38,17 @@ public class detailFacture implements Serializable {
 	@Column(name="montantRemise")
 	private Float montantRemise;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="detailFactures")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="DetailFactures")
 	private Set<Produit> produits;
 	
 	@ManyToOne
 	Facture factures;
 
-	public detailFacture() {
+	public DetailFacture() {
 		super();
 	}
 
-	public detailFacture(Long idDetailFacture, Integer qte, Float prixTotal, Integer pourcentageRemise,
+	public DetailFacture(Long idDetailFacture, Integer qte, Float prixTotal, Integer pourcentageRemise,
 			Float montantRemise, Set<Produit> produits, Facture factures) {
 		super();
 		this.idDetailFacture = idDetailFacture;
