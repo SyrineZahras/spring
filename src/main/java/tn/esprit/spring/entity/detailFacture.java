@@ -13,9 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 @Entity
 @Table(name= "detailFacture")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property="idDetailFacture")
 public class detailFacture implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

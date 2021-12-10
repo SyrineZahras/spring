@@ -8,14 +8,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="Produit")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property="idProduit")
 public class Produit implements Serializable {
 private static final long serialVersionUID = 1L;
 	
@@ -34,7 +47,7 @@ private static final long serialVersionUID = 1L;
 	@Column(name="prixUnitaire")
 	private Float prixUnitaire;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private DetailProduit produitDetail;
 	
 	@ManyToOne
@@ -49,9 +62,7 @@ private static final long serialVersionUID = 1L;
 	@ManyToOne
 	detailFacture detailFactures;
 
-	public Produit() {
-		super();
-	} 
+	
 
 	public Produit( String code, String libelle, Float prixUnitaire, DetailProduit produitDetail,
 			Stock stock, Set<Fournisseur> fournisseurs, Rayon rayons, detailFacture detailFactures) {
@@ -65,81 +76,9 @@ private static final long serialVersionUID = 1L;
 		this.rayons = rayons;
 		this.detailFactures = detailFactures;
 	}
+	
 
-	public Long getIdProduit() {
-		return idProduit;
-	}
 
-	public void setIdProduit(Long idProduit) {
-		this.idProduit = idProduit;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-
-	public Float getPrixUnitaire() {
-		return prixUnitaire;
-	}
-
-	public void setPrixUnitaire(Float prixUnitaire) {
-		this.prixUnitaire = prixUnitaire;
-	}
-
-	public DetailProduit getProduitDetail() {
-		return produitDetail;
-	}
-
-	public void setProduitDetail(DetailProduit produitDetail) {
-		this.produitDetail = produitDetail;
-	}
-
-	public Stock getStock() {
-		return stock;
-	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
-	}
-
-	public Set<Fournisseur> getFournisseurs() {
-		return fournisseurs;
-	}
-
-	public void setFournisseurs(Set<Fournisseur> fournisseurs) {
-		this.fournisseurs = fournisseurs;
-	}
-
-	public Rayon getRayons() {
-		return rayons;
-	}
-
-	public void setRayons(Rayon rayons) {
-		this.rayons = rayons;
-	}
-
-	public detailFacture getDetailFactures() {
-		return detailFactures;
-	}
-
-	public void setDetailFactures(detailFacture detailFactures) {
-		this.detailFactures = detailFactures;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	
 
 }

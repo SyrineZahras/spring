@@ -14,7 +14,7 @@
 	<name>Spring</name>
 	<description>Skander_Turki</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,7 +25,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -35,6 +35,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			 <artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId> springfox-boot-starter </artifactId>
+		<version> 3.0.0 </version>
 		</dependency>
 	</dependencies>
 
